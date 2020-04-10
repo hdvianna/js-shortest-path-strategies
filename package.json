@@ -1,0 +1,14 @@
+{
+  "name": "js-shortest-path",
+  "version": "1.0.0",
+  "description": "Shortest path strategies in JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^25.3.0"
+  }
+}
