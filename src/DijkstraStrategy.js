@@ -6,8 +6,8 @@ const INFINITY = require('../src/GraphBuilder').INFINITY;
  *      - Shortest distance from a chosen vertex
  *      - Previous vertex
  *  - Two lists:
- *      - Visiteds
- *      - Unvisiteds
+ *      - Visited
+ *      - Unvisited
  */
 function DijkstraStrategy(graph) {
 
@@ -24,12 +24,10 @@ function DijkstraStrategy(graph) {
 
         let vertices = Object.keys(graph);
         let table = createTable(vertices);
-        let visiteds = [];
-        let unvisiteds = vertices;
+        let visited = [];
+        let unvisited = vertices;
 
-        table[start].shortestDistance = 0;
-        strategy(start, 0);
-
+        strategy();
         return {
             'path': backtrackPath(end),
             'cost': table[end].shortestDistance
@@ -45,37 +43,36 @@ function DijkstraStrategy(graph) {
             }, {})
         }
 
-        function strategy(current, cost) {
-            visiteds.push(current);
-            unvisiteds = unvisiteds.filter((item) => {
-                return item !== current;
-            });
-
-            let destinations = Object.keys(graph[current]).reduce((possibleDestinations, destination) => {
-                if (graph[current][destination] < INFINITY && visiteds.indexOf(destination) === -1) {
-                    possibleDestinations.push(destination);
+        function strategy() {
+            table[start].shortestDistance = 0;
+            while (unvisited.length > 0) {
+                /*Visit the unvisited node with the shortest distance*/
+                let current = unvisited.reduce((last, item) => {
+                    if(!last || table[item].shortestDistance < table[last].shortestDistance) {
+                        return item;
+                    } else {
+                        return last;
+                    }
+                }, "");
+                /*Update distances of edges*/
+                let edges = Object.keys(graph[current]).filter((edge) => {
+                    return edge != current && graph[current][edge] < INFINITY;
+                });
+                let currentDistance = table[current].shortestDistance;
+                for(let edge of edges) {
+                    let newDistance = currentDistance + graph[current][edge];
+                    if (newDistance < table[edge].shortestDistance) {
+                        table[edge].shortestDistance = newDistance;
+                        table[edge].previous = current;
+                    }
                 }
-                return possibleDestinations;
-            }, []);
-
-            let minCost = INFINITY;
-            let next;
-            for(let destination of destinations) {
-                let newCost = graph[current][destination] + cost;
-                if (newCost < minCost) {
-                    next = destination;
-                    minCost = newCost;
-                }
-                if (newCost < table[destination].shortestDistance) {
-                    table[destination].shortestDistance = newCost;
-                    table[destination].previous = current;
-                }
+                /*Mark the node as visited*/
+                visited.push(current);
+                /*Remove the node from unvisited*/
+                unvisited = unvisited.filter((item) => {
+                    return item !== current;
+                });
             }
-
-            if (next) {
-                strategy(next, minCost);
-            }
-
         }
 
         function backtrackPath(current) {
