@@ -8,7 +8,7 @@ Algorithms strategies for finding graph shortest paths
 
 ### GreedyStrategy
 
-```
+```javascript
 const {GraphBuilder, GreedStrategy} = require('js-shortest-path');
 
 //Creates a graph
@@ -32,7 +32,7 @@ console.log(greedy.shortest('S','C'));
 
 ### DijkstraStrategy
 
-```
+```javascript
 const {GraphBuilder, DijkstraStrategy} = require('js-shortest-path');
 
 //Creates a graph
