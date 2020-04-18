@@ -1,12 +1,12 @@
 {
   "name": "js-shortest-path",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Shortest path strategies in JS",
   "scripts": {
     "test": "jest",
     "build": "webpack --config webpack.config.js --mode=production"
   },
-  "main": "src/shortest-path-strategies.commonjs2.js",
+  "main": "dist/shortest-path-strategies.commonjs2.js",
   "author": "hdvianna",
   "license": "ISC",
   "bugs": {
