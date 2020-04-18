@@ -2,13 +2,16 @@
   "name": "js-shortest-path",
   "version": "1.0.0",
   "description": "Shortest path strategies in JS",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack --config webpack.config.js --mode=production"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^25.3.0"
+    "jest": "^25.3.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   }
 }
