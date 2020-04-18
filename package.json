@@ -1,6 +1,6 @@
 {
   "name": "js-shortest-path",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Shortest path strategies in JS",
   "scripts": {
     "test": "jest",
