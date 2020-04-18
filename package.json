@@ -1,13 +1,18 @@
 {
   "name": "js-shortest-path",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shortest path strategies in JS",
   "scripts": {
     "test": "jest",
     "build": "webpack --config webpack.config.js --mode=production"
   },
-  "author": "",
+  "main": "dist/shortest-path-strategies.js",
+  "author": "hdvianna",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hdvianna/js-shortest-path-strategies/issues"
+  },
+  "homepage": "https://github.com/hdvianna/js-shortest-path-strategies#readme",
   "devDependencies": {
     "jest": "^25.3.0",
     "webpack": "^4.42.1",
