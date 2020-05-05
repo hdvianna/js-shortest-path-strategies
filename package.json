@@ -1,6 +1,6 @@
 {
   "name": "js-shortest-path",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Shortest path strategies in JS",
   "keywords": ["graph","graph algorithms","path search","shortest path","dijkstra","greedy"],
   "scripts": {

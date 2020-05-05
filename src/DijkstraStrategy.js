@@ -29,7 +29,9 @@ function DijkstraStrategy(graph) {
 
         strategy();
         return {
-            'path': backtrackPath(end),
+            'path': function() {
+                return backtrackPath(end);
+            },
             'cost': table[end].shortestDistance
         };
 
@@ -76,12 +78,15 @@ function DijkstraStrategy(graph) {
         }
 
         function backtrackPath(current) {
-            if(current === start) {
+            current = current+"";
+            if(current === start+"") {
                 return [current];
-            } else {
+            } else if(typeof table[current] === "object") {
                 let path = backtrackPath(table[current].previous);
                 path.push(current);
                 return path;
+            } else {
+                return [];
             }
         }
 
